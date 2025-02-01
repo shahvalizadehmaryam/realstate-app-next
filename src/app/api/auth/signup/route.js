@@ -1,13 +1,13 @@
 import { NextResponse } from "next/server";
 import { hashPassword } from "@/utils/auth";
-import connectDB from "@/utils/connectDB";
 import User from "@/models/User";
+import connectDB from "@/utils/connectDB";
 
 export async function POST(req) {
   try {
     await connectDB();
     const { email, password } = await req.json();
-    console.log({ email, password });
+    console.log({ email, password }); 
     if (!email || !password) {
       return NextResponse.json(
         { error: "لطفا اطلاعات معتبر را وارد نمایید." },
@@ -22,7 +22,7 @@ export async function POST(req) {
         { status: 422 }
       );
     }
-    const hashedPassword = hashPassword(password);
+    const hashedPassword = await hashPassword(password);
     const newUser = await User.create({
       email: email,
       password: hashedPassword,
