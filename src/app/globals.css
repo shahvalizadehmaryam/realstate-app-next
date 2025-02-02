@@ -1,7 +1,19 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@layer components {
+  .custom-label {
+    @apply text-[#304ffe] mb-2 font-normal;
+  }
 
+  .custom-input {
+    @apply mb-10 w-[250px] border border-[#304ffe] border-dashed text-gray-400 rounded-md p-2 text-base h-10 focus:border focus:border-[#304ffe] focus:border-solid outline-none;
+  }
+
+  .ltr {
+    direction: ltr !important;
+  }
+}
 * {
   padding: 0;
   margin: 0;
