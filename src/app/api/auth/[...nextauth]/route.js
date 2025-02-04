@@ -15,7 +15,7 @@ export const authOptions = {
           await connectDB();
         } catch (error) {
           throw new Error("مشکلی در سرور رخ داده است");
-        }
+        } 
 
         if (!email || !password)
           throw new Error("لطفا اطلاعات معتبر وارد کنید");
