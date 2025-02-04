@@ -7,7 +7,7 @@ export async function POST(req) {
   try {
     await connectDB();
     const { email, password } = await req.json();
-    console.log({ email, password }); 
+    console.log({ email, password });
     if (!email || !password) {
       return NextResponse.json(
         { error: "لطفا اطلاعات معتبر را وارد نمایید." },
@@ -28,7 +28,10 @@ export async function POST(req) {
       password: hashedPassword,
     });
     console.log(newUser);
-    return NextResponse.json({ message: "حساب کاربری ایجاد شد." });
+    return NextResponse.json(
+      { message: "حساب کاربری ایجاد شد." },
+      { status: 201 }
+    );
   } catch (error) {
     return NextResponse.json(
       { error: "مشکلی در اتصال به سرور به وجود آمده است." },
